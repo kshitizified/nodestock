@@ -1,0 +1,16 @@
+{
+  "name": "nodestock",
+  "version": "1.0.0",
+  "description": "A Stock Viewing App built using Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Kshitiz Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4"
+  }
+}
