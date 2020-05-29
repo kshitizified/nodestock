@@ -1,76 +1,57 @@
 </br>
 <center>
-{{!-- about company section starts here  --}}
- 
- <div class="row">
-     {{!-- company overview card --}}
-  <div class="col-sm-4">
-
-      {{!-- <div class="card text-white bg-primary mb-3" style="max-width: 800px;">
-  <div class="card-header"><h1>{{stock.companyName}} ({{stock.symbol}})</h1></div>
-  <div class="card-body">
-    <h1 class="card-title"></h1>
-    <p class="card-text">Comapny Description goes here</p>
-        <p class="card-text"><small class="text-muted">Extra Details goes here</small></p>
-  </div>
-</div> --}}
-
-    <div class="card border-secondary mb-3" style="max-width: 30rem;">
-  <div class="card-header">{{stock.companyName}} ({{stock.symbol}})</div>
-  <div class="card-body text-info">
-    <h5 class="card-title">{{posted_stuff}}</h5>
-    
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-
-  </div> {{!-- company overview card ends here --}}
-
-{{!-- company stock overview card --}}
-  <div class="col-sm-8">
-
-      <div class="card border-info mb-3" style="max-width: 60rem;">
-  <div class="card-header">Stock Portfolio of {{stock.companyName}}</div>
-  <div class="card-body text-info">
-    <h5 class="card-title"></h5>
-    {{!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
-    <p class="card-text"><strong >Primary Exchange: </strong>{{stock.primaryExchange}}</p>
-    <p class="card-text"></p><strong>Latest Date: </strong>{{stock.latestTime}}</p>
-    <p class="card-text"></p><strong>Latest Price: </strong>${{stock.latestPrice}}</p>
-    <p class="card-text"></p><strong>Previous Close: </strong>${{stock.previousClose}}</p>
-    <p class="card-text"></p><strong>Percent Change: </strong>{{stock.changePercent}}%</p>
-    <p class="card-text"></p><strong>High Time (15 min delayed price): </strong>{{stock.highTime}}</p>
-    <p class="card-text"></p><strong>Low Time (15 min delayed price): </strong>{{stock.lowTime}}</p>   
-    <p class="card-text"></p><strong>Market Cap: </strong>{{stock.marketCap}}</p>
-    <p class="card-text"></p><strong>YTD Change: </strong>{{stock.ytdChange}}%</p> <!-- need to do *100 here -->
-    <p class="card-text"></p><strong>52-wk high: </strong>{{stock.week52High}}</p>
-    <p class="card-text"></p><strong>52-wk low: </strong>{{stock.week52Low}}</p>
-    <p class="card-text"></p><strong>P/E ratio: </strong>{{stock.peRatio}}</p>
-    <p class="card-text"></p><strong>High Time: </strong>{{stock.highTime}}</p>
-    <p class="card-text"></p><strong>Low Time: </strong>{{stock.lowTime}}</p>
-  
-  </div>
-</div>
-
-
-
-
-
-      <h1> </h1>
-</br>
-
-  </div> {{!-- comapny stock overview card ends here  --}}
-</div>
-
-
-
-
-
-
-
-
- 
-
-
-</br>
+   {{!-- about company section starts here  --}}
+   <div class="row">
+      {{!-- company overview card --}}
+      <div class="col-sm-4">
+         <div class="card border-secondary mb-3" style="max-width: 30rem;">
+            <div class="card-header">{{stock.companyName}} ({{stock.symbol}})</div>
+            <div class="card-body text-info">
+               <h5 class="card-title">{{comapny.symbol}}</h5>
+               <p class="card-text">{{company.description}}</p>
+            </div>
+         </div>
+      </div>
+      {{!-- company overview card ends here --}}
+      {{!-- company stock overview card --}}
+      <div class="col-sm-8">
+         <div class="card border-info mb-3" style="max-width: 60rem;">
+            <div class="card-header">Stock Portfolio of {{stock.companyName}}</div>
+            <div class="card-body text-info">
+               <h5 class="card-title"></h5>
+               <p class="card-text"><strong >Primary Exchange: </strong>{{stock.primaryExchange}}</p>
+               <p class="card-text"></p>
+               <strong>Latest Date: </strong>{{stock.latestTime}}</p>
+               <p class="card-text"></p>
+               <strong>Latest Price: </strong>${{stock.latestPrice}}</p>
+               <p class="card-text"></p>
+               <strong>Previous Close: </strong>${{stock.previousClose}}</p>
+               <p class="card-text"></p>
+               <strong>Percent Change: </strong>{{stock.changePercent}}%</p>
+               <p class="card-text"></p>
+               <strong>High Time (15 min delayed price): </strong>{{stock.highTime}}</p>
+               <p class="card-text"></p>
+               <strong>Low Time (15 min delayed price): </strong>{{stock.lowTime}}</p>   
+               <p class="card-text"></p>
+               <strong>Market Cap: </strong>{{stock.marketCap}}</p>
+               <p class="card-text"></p>
+               <strong>YTD Change: </strong>{{stock.ytdChange}}%</p> <!-- need to do *100 here -->
+               <p class="card-text"></p>
+               <strong>52-wk high: </strong>{{stock.week52High}}</p>
+               <p class="card-text"></p>
+               <strong>52-wk low: </strong>{{stock.week52Low}}</p>
+               <p class="card-text"></p>
+               <strong>P/E ratio: </strong>{{stock.peRatio}}</p>
+               <p class="card-text"></p>
+               <strong>High Time: </strong>{{stock.highTime}}</p>
+               <p class="card-text"></p>
+               <strong>Low Time: </strong>{{stock.lowTime}}</p>
+            </div>
+         </div>
+         <h1> </h1>
+         </br>
+      </div>
+      {{!-- comapny stock overview card ends here  --}}
+   </div>
+   </br>
 </center>
