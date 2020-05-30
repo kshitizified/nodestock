@@ -120,9 +120,12 @@ app.post('/',  (req, res) => {
             console.log('comp: '+comp);
             console.log("logo: "+logo);
             // Convert JSON String to JSON objects
-            const stockDetails = JSON.parse(stocky);
+            var stockDetails = JSON.parse(stocky);
             const companyDetails = JSON.parse(comp);
             const companyLogo = JSON.parse(logo);
+
+            // Marshall Data for Response
+            stockDetails = marshallResponse(stockDetails);
         
             // render home view with response from two APIs and return 
             res.render('home',{
@@ -131,6 +134,30 @@ app.post('/',  (req, res) => {
                 logo : companyLogo
             });
         return;
+      }
+
+      // function to marshall the response from get stock details API
+      function marshallResponse(stockDetails){
+            // formatting Closing Percentage Change
+            var closingPercentChange = stockDetails.changePercent;
+            stockDetails.changePercent = closingPercentChange*100;
+            // formatting YTD Change
+            var ytdPercentageChange = stockDetails.ytdChange;
+            stockDetails.ytdChange = ytdPercentageChange*100;
+            // Converting time in milliseconds to UTC Date
+            var openTime = stockDetails.openTime;
+            stockDetails.openTime = new Date(openTime).toUTCString();
+            var closeTime = stockDetails.closeTime;
+            stockDetails.closeTime = new Date(closeTime).toUTCString();
+            var todayHighTime = stockDetails.highTime;
+            stockDetails.highTime = new Date(todayHighTime).toUTCString();
+            var todayLowTime = stockDetails.lowTime;
+            stockDetails.lowTime = new Date(todayLowTime).toUTCString();
+            var lastTrade = stockDetails.lastTradeTime;
+            stockDetails.lastTradeTime = new Date(lastTrade).toUTCString();
+            
+            return stockDetails;
+
       }
 });
 

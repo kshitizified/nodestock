@@ -5,27 +5,26 @@
       {{!-- company overview card --}}
       <div class="col-sm-4">
          <div class="card border-secondary mb-3" style="max-width: 30rem;">
-            <div class="card-header">{{stock.companyName}} ({{stock.symbol}})</div>
+            <div class="card-header"><Strong>{{stock.companyName}} ({{stock.symbol}})</Strong></div>
             <div class="card-body text-info">
                <div class="row">
-                   <div class="col-sm-12">
-                        <img src="{{logo.url}}" height="auto" width="auto">
-                   </div>
-                </div>
-                <br>
-                <div class="row">
-                   <div class="col-sm-12">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#companyDescription">About {{stock.companyName}}</button>
-                   </div>
-                </div>
-                <br>
-                <div class="btn-outline-secondary">Industry: <strong>{{company.industry}}</strong></div>
-              <div class="btn-outline-secondary">Website: <a target="_blank" href='{{company.website}}'><strong>{{company.website}}</strong></a></div>
+                  <div class="col-sm-12">
+                     <img src="{{logo.url}}" height="auto" width="auto">
+                  </div>
+               </div>
+               <br>
+               <div class="row">
+                  <div class="col-sm-12">
+                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#companyDescription">About {{stock.companyName}}</button>
+                  </div>
+               </div>
+               <br>
+               <div class="">Website: <a target="_blank" href='{{company.website}}'><strong>{{company.website}}</strong></a></div>
+               <div class="btn-outline-secondary">Industry: <strong>{{company.industry}}</strong></div>
                <div class="btn-outline-secondary">CEO: <strong>{{company.CEO}}</strong></div>
-              <div class="btn-outline-secondary">Workforce: <strong>{{company.employees}}</strong></div>
+               <div class="btn-outline-secondary">Workforce: <strong>{{company.employees}}</strong></div>
                <div class="btn-outline-secondary">Registered Address: <strong>{{company.address}}, {{company.city}}, Zip:{{company.zip}}, {{company.country}}</strong></div>
-              <div class="btn-outline-secondary">Registered Contact: <strong>{{company.phone}}</strong></div>
-               
+               <div class="btn-outline-secondary">Registered Contact: <strong>{{company.phone}}</strong></div>
                <p class="card-text"></p>
             </div>
          </div>
@@ -34,36 +33,95 @@
       {{!-- company stock overview card --}}
       <div class="col-sm-8">
          <div class="card border-info mb-3" style="max-width: 60rem;">
-            <div class="card-header">Stock Portfolio of {{stock.companyName}}</div>
+            <div class="card-header"><strong>Stock Portfolio of {{stock.companyName}}</strong></div>
             <div class="card-body text-info">
-               <h5 class="card-title"></h5>
-               <p class="card-text"><strong >Primary Exchange: </strong>{{stock.primaryExchange}}</p>
-               <p class="card-text"></p>
-               <strong>Latest Date: </strong>{{stock.latestTime}}</p>
-               <p class="card-text"></p>
-               <strong>Latest Price: </strong>${{stock.latestPrice}}</p>
-               <p class="card-text"></p>
-               <strong>Previous Close: </strong>${{stock.previousClose}}</p>
-               <p class="card-text"></p>
-               <strong>Percent Change: </strong>{{stock.changePercent}}%</p>
-               <p class="card-text"></p>
-               <strong>High Time (15 min delayed price): </strong>{{stock.highTime}}</p>
-               <p class="card-text"></p>
-               <strong>Low Time (15 min delayed price): </strong>{{stock.lowTime}}</p>   
-               <p class="card-text"></p>
-               <strong>Market Cap: </strong>{{stock.marketCap}}</p>
-               <p class="card-text"></p>
-               <strong>YTD Change: </strong>{{stock.ytdChange}}%</p> <!-- need to do *100 here -->
-               <p class="card-text"></p>
-               <strong>52-wk high: </strong>{{stock.week52High}}</p>
-               <p class="card-text"></p>
-               <strong>52-wk low: </strong>{{stock.week52Low}}</p>
-               <p class="card-text"></p>
-               <strong>P/E ratio: </strong>{{stock.peRatio}}</p>
-               <p class="card-text"></p>
-               <strong>High Time: </strong>{{stock.highTime}}</p>
-               <p class="card-text"></p>
-               <strong>Low Time: </strong>{{stock.lowTime}}</p>
+               <table class="table table-hover">
+                  {{!-- 
+                  <thead>
+                     <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                     </tr>
+                  </thead>
+                  --}}
+                  <tbody>
+                     <tr class="table-primary">
+                        <td><strong>Primary Exchange</strong></td>
+                        <td><strong>{{stock.primaryExchange}}</strong></td>
+                     </tr>
+                     <tr>
+                        <td><strong>Last Updated (UTC)</strong></td>
+                        <td><strong>{{stock.latestTime}}</strong></td>
+                     </tr>
+                     <tr class="table-primary">
+                        <td><strong>Latest Price</strong></td>
+                        <td><strong>${{stock.latestPrice}}</strong></td>
+                     </tr>
+                     <tr>
+                        <td><strong>Open Price</strong></td>
+                        <td><strong>${{stock.open}}</strong></td>
+                     </tr>
+                     <tr class="table-primary">
+                        <td><strong>Opening Time</strong></td>
+                        <td><strong>{{stock.openTime}}</strong></td>
+                     </tr>
+                     <tr>
+                        <td><strong>Closing Price</strong></td>
+                        <td><strong>${{stock.close}}</strong></td>
+                     </tr>
+                     <tr class="table-primary">
+                        <td><strong>Closing Time</strong></td>
+                        <td><strong>{{stock.closeTime}}</strong></td>
+                     </tr>
+                     <tr>
+                        <td><strong>Previous Close Price</strong></td>
+                        <td><strong>${{stock.previousClose}}</strong></td>
+                     </tr>
+                     <tr class="table-primary">
+                        <td><strong>Closing % Change From Previous Day</strong></td>
+                        <td><strong>{{stock.changePercent}}%</strong></td>
+                     </tr>
+                     <tr>
+                        <td><strong>Today's High Price</strong></td>
+                        <td><strong>${{stock.high}}</strong></td>
+                     </tr>
+                     <tr class="table-primary">
+                        <td><strong>Today's High Time</strong></td>
+                        <td><strong>{{stock.highTime}}</strong></td>
+                     </tr>
+                     <tr>
+                        <td><strong>Today's Low Price</strong></td>
+                        <td><strong>${{stock.low}}</strong></td>
+                     </tr>
+                     <tr>
+                     <tr class="table-primary">
+                        <td><strong>Today's Low Time</strong></td>
+                        <td><strong>{{stock.lowTime}}</strong></td>
+                     </tr>
+                     <tr>
+                        <td><strong>Last Trade Time</strong></td>
+                        <td><strong>{{stock.lastTradeTime}}</strong></td>
+                     </tr>
+                     <tr class="table-primary">
+                        <td><strong>52-wk high</strong></td>
+                        <td><strong>${{stock.week52High}}</strong></td>
+                     </tr>
+                     <tr>
+                        <td><strong>52-wk low</strong></td>
+                        <td><strong>${{stock.week52Low}}</strong></td>
+                     </tr>
+                     <tr class="table-primary">
+                        <td><strong>P/E ratio</strong></td>
+                        <td><strong>{{stock.peRatio}}</strong></td>
+                     </tr>
+                     <tr>
+                        <td><strong>YTD Change</strong></td>
+                        <td><strong>{{stock.ytdChange}}%</strong></td>
+                     </tr>
+                  </tbody>
+               </table>
             </div>
          </div>
          <h1> </h1>
@@ -73,28 +131,29 @@
    </div>
    </br>
 </center>
-
 {{!-- company description modal --}}
 <div class="modal fade" id="companyDescription" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">About {{stock.companyName}} ({{stock.symbol}})</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">About {{stock.companyName}} ({{stock.symbol}})</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div class="row">
+               <div class="col-sm-12">
+                  <center><img src="{{logo.url}}" height="auto" width="auto"></center>
+               </div>
+            </div>
+            <br>
+            {{company.description}}
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+         </div>
       </div>
-      <div class="modal-body">
-          <div class="row">
-                   <div class="col-sm-12">
-                        <center><img src="{{logo.url}}" height="auto" width="auto"></center>
-                   </div>
-                </div><br>
-        {{company.description}}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>{{!-- company description modal ends here --}}
+   </div>
+</div>
+{{!-- company description modal ends here --}}
