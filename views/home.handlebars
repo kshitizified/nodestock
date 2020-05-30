@@ -7,8 +7,25 @@
          <div class="card border-secondary mb-3" style="max-width: 30rem;">
             <div class="card-header">{{stock.companyName}} ({{stock.symbol}})</div>
             <div class="card-body text-info">
-               <h5 class="card-title">{{comapny.symbol}}</h5>
-               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#companyDescription">About {{stock.companyName}}</button>
+               <div class="row">
+                   <div class="col-sm-12">
+                        <img src="{{logo.url}}" height="auto" width="auto">
+                   </div>
+                </div>
+                <br>
+                <div class="row">
+                   <div class="col-sm-12">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#companyDescription">About {{stock.companyName}}</button>
+                   </div>
+                </div>
+                <br>
+                <div class="btn-outline-secondary">Industry: <strong>{{company.industry}}</strong></div>
+              <div class="btn-outline-secondary">Website: <a target="_blank" href='{{company.website}}'><strong>{{company.website}}</strong></a></div>
+               <div class="btn-outline-secondary">CEO: <strong>{{company.CEO}}</strong></div>
+              <div class="btn-outline-secondary">Workforce: <strong>{{company.employees}}</strong></div>
+               <div class="btn-outline-secondary">Registered Address: <strong>{{company.address}}, {{company.city}}, Zip:{{company.zip}}, {{company.country}}</strong></div>
+              <div class="btn-outline-secondary">Registered Contact: <strong>{{company.phone}}</strong></div>
+               
                <p class="card-text"></p>
             </div>
          </div>
@@ -68,6 +85,11 @@
         </button>
       </div>
       <div class="modal-body">
+          <div class="row">
+                   <div class="col-sm-12">
+                        <center><img src="{{logo.url}}" height="auto" width="auto"></center>
+                   </div>
+                </div><br>
         {{company.description}}
       </div>
       <div class="modal-footer">
