@@ -2,8 +2,7 @@
 <center>
    </br>
    </br>
-   </br>
-   </br>
+   
    <div class="row">
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -76,14 +75,18 @@
             Checking Stock details of your favourite company is now super easy!
             <h4>
             <br/>
-            Just enter the exchange symbol of your favourite company in the search bar present in Menu above.
+            <h4>
+                {{!-- This uses typewriter.js which is in resource folder of public --}}
+                {{!-- typewriter.js is embedded in main.handlebars' head section --}}
+  <a class="typewrite" data-period="2000" data-type='[ "Just enter the exchange symbol of your favourite company in the search bar present in Menu above.", "Have fun!" ]'>
+    <span class="wrap"></span>
+  </a>
+</h4>
          </div>
          <br/><br/>
          <div class="error-actions">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Click to view some sample company exchange symbols 
-            </button>
+            
          </div>
       </div>
       <div class="col-md-3">
@@ -95,4 +98,15 @@
    </div>
    </div>
    </br>
+   <div class="row">
+       <div class="col-md-12">
+           <center>
+           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Click to view some sample company exchange symbols 
+            </button>
+            </center>
+           </div>
+       </div>
 </center>
+
+
