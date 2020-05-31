@@ -38,6 +38,10 @@ app.post('/',  (req, res) => {
     var comp = null;
     // logo will store response from the logo API
     var logo = null;
+    // chart will store json required for HighCharts to draw the graph
+    var chart = null;
+    // This will store response from chart/dynamic API. It is used to make chart for current month.
+    var dataThisMonth = null;
 
     // Making an async parallel call for the two APIs - get stocks' details and get company details
     async.parallel({ 
@@ -81,12 +85,28 @@ app.post('/',  (req, res) => {
                         callback(true, {});
                     }
                 });
-            },    
+            },
+            
+        four: function(callback) { 
+            console.log('Calling get stock data for this month');
+                request('https://cloud.iexapis.com/stable/stock/'+req.body.stock_ticker+'/chart/dynamic?token=pk_6cad451b2ea543e4aa1b534419d7489f',
+                    function (error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                             callback(null, body);
+                        } 
+                        else {
+                            // setting error as true
+                            callback(true, {});
+                        }
+                    });
+                },
        
         }, 
         // optional callback
         function(err, results) {
           // 'results' is now equal to: {one: 1, two: 2, ..., something_else: some_value}
+
+          // if we got an error during asnyc calls (Here only not found case is considered).
           if(err){
               console.log("Error occured while calling APIs: "+err);
               renderErrorPage();
@@ -97,6 +117,7 @@ app.post('/',  (req, res) => {
           comp = results.one;
           stocky = results.two;
           logo = results.three;
+          dataThisMonth = results.four;
           renderPage();
          
         }
@@ -131,7 +152,8 @@ app.post('/',  (req, res) => {
             res.render('home',{
                 stock : stockDetails,
                 company : companyDetails,
-                logo : companyLogo
+                logo : companyLogo,
+                highChartJson : chart
             });
         return;
       }
@@ -156,7 +178,110 @@ app.post('/',  (req, res) => {
             var lastTrade = stockDetails.lastTradeTime;
             stockDetails.lastTradeTime = new Date(lastTrade).toUTCString();
             
+            chart = makeHighChart(stockDetails.companyName);
+            // console.log("********************************************************************");
+            // console.log(typeof chart);
+            // console.log("********************************************************************");
             return stockDetails;
+
+      }
+
+      function makeHighChart(companyName){
+        
+        var dataThisMonthJSON = JSON.parse(dataThisMonth);
+
+        var dataDynamic = dataThisMonthJSON.data;
+        var dataDynamicLength = Object.keys(dataDynamic).length;
+
+        
+        
+
+        var title = {
+            text: 'Stock Trends for this Month'   
+         };
+         
+         var subtitle = {
+            text: companyName
+         };
+
+         var xAxis = {
+            categories: []
+         };
+
+         
+
+        console.log(xAxis.categories);
+
+         var yAxis = {
+            title: {
+               text: 'Stock Price ($)'
+            },
+            plotLines: [{
+               value: 0,
+               width: 1,
+               color: '#808080'
+            }]
+         };
+
+         var tooltip = {
+            valuePrefix: '$'
+         }
+
+         var legend = {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+         };
+
+         var series =  [{
+            name: 'Open',
+            data: []
+         }, 
+         {
+            name: 'Close',
+            data: []
+         }, 
+         {
+            name: 'High',
+            data: []
+         },
+         {
+            name: 'Low',
+            data: []
+         }
+      ];
+
+      for(var i=0; i<dataDynamicLength; i++){
+        xAxis.categories.push(dataDynamic[i].date);
+        // Open
+        series[0].data.push(dataDynamic[i].open);
+        // Close
+        series[1].data.push(dataDynamic[i].close);
+        // High
+        series[2].data.push(dataDynamic[i].high);
+        // Low
+        series[3].data.push(dataDynamic[i].low);
+    }
+
+        var json = {};
+         json.title = title;
+         json.subtitle = subtitle;
+         json.xAxis = xAxis;
+         json.yAxis = yAxis;
+         json.tooltip = tooltip;
+         json.legend = legend;
+         json.series = series;
+        
+         
+         var highChartJsonWrapper = {};
+         var jsonString = JSON.stringify(json);
+        //  jsonString.replace(/"/g,'\\');
+         highChartJsonWrapper.jsonValue = jsonString;
+        //  console.log("#####################################################");
+        //  console.log(typeof jsonString);
+        //  console.log("#####################################################");
+         return highChartJsonWrapper;
 
       }
 });

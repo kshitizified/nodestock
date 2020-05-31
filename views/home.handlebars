@@ -33,8 +33,28 @@
       {{!-- company stock overview card --}}
       <div class="col-sm-8">
          <div class="card border-info mb-3" style="max-width: 60rem;">
-            <div class="card-header"><strong>Stock Portfolio of {{stock.companyName}}</strong></div>
+            <div class="card-header">
+               
+               <strong><h5>Stock Portfolio of {{stock.companyName}}<h5></strong>
+               
+               
+                  <div id="chartInfo" style="display:none;">{{highChartJson.jsonValue}}</div>
+               
+               </div>
             <div class="card-body text-info">
+               <div class="row">
+                  <div class="col-sm-12">
+                           {{!-- <center> --}}
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#container1" onclick="drawLineChart()" style="float: right;">
+  Visualize
+</button>
+{{!-- </center> --}}
+
+                  </div>
+               
+</div>
+<br>
+<div class="row">
                <table class="table table-hover">
                   <caption>Disclaimer: The above data has been provided by a third party API. Hence, We do not guarantee the correcteness of these data.</caption>
                   <tbody>
@@ -112,7 +132,7 @@
                         <td><strong>{{stock.ytdChange}}%</strong></td>
                      </tr>
                   </tbody>
-               </table>
+               </table></div>
             </div>
          </div>
          <h1> </h1>
@@ -148,3 +168,54 @@
    </div>
 </div>
 {{!-- company description modal ends here --}}
+
+
+{{!-- Highcharts feature begins here  --}}
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="container1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Stock Trends Visualizer for {{stock.companyName}} ({{stock.symbol}})</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <div id = "container" class="row"></div>
+      </div>
+      <div class="modal-footer">
+      
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+        
+         function drawLineChart() {
+            var highchartsJSON = document.getElementById("chartInfo").innerHTML;
+            Highcharts.setOptions({
+        lang: {
+            thousandsSep: ','
+        }
+    });
+            $('#container').highcharts(JSON.parse(highchartsJSON));
+         }
+            
+        
+      </script>
+
+{{!-- Highcharts feature ends here --}}
