@@ -34,105 +34,108 @@
       <div class="col-sm-8">
          <div class="card border-info mb-3" style="max-width: 60rem;">
             <div class="card-header">
-               
-               <strong><h5>Stock Portfolio of {{stock.companyName}}<h5></strong>
-               
-               
-                  <div id="chartInfo" style="display:none;">{{highChartJson.jsonValue}}</div>
-               
-               </div>
+               <strong>
+                  <h5>
+                  Stock Portfolio of {{stock.companyName}}
+                  <h5>
+               </strong>
+               <div id="chartInfo" style="display:none;">{{highChartJson.jsonValue}}</div>
+               <div id="chartInfoForToday" style="display:none;">{{chartForToday.jsonValue}}</div>
+            </div>
             <div class="card-body text-info">
                <div class="row">
-                  <div class="col-sm-12">
-                           {{!-- <center> --}}
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#container1" onclick="drawLineChart()" style="float: right;">
-  Visualize
-</button>
-{{!-- </center> --}}
-
+                  <div class="col-sm-6">
+                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#thisMonthStockVisual" onclick="drawLineChart()" style="float: right;">
+                     Visualize for this month
+                     </button>
                   </div>
-               
-</div>
-<br>
-<div class="row">
-               <table class="table table-hover">
-                  <caption>Disclaimer: The above data has been provided by a third party API. Hence, We do not guarantee the correcteness of these data.</caption>
-                  <tbody>
-                     <tr class="table-primary">
-                        <td><strong>Primary Exchange</strong></td>
-                        <td><strong>{{stock.primaryExchange}}</strong></td>
-                     </tr>
-                     <tr>
-                        <td><strong>Last Updated (UTC)</strong></td>
-                        <td><strong>{{stock.latestTime}}</strong></td>
-                     </tr>
-                     <tr class="table-primary">
-                        <td><strong>Latest Price</strong></td>
-                        <td><strong>${{stock.latestPrice}}</strong></td>
-                     </tr>
-                     <tr>
-                        <td><strong>Open Price</strong></td>
-                        <td><strong>${{stock.open}}</strong></td>
-                     </tr>
-                     <tr class="table-primary">
-                        <td><strong>Opening Time</strong></td>
-                        <td><strong>{{stock.openTime}}</strong></td>
-                     </tr>
-                     <tr>
-                        <td><strong>Closing Price</strong></td>
-                        <td><strong>${{stock.close}}</strong></td>
-                     </tr>
-                     <tr class="table-primary">
-                        <td><strong>Closing Time</strong></td>
-                        <td><strong>{{stock.closeTime}}</strong></td>
-                     </tr>
-                     <tr>
-                        <td><strong>Previous Close Price</strong></td>
-                        <td><strong>${{stock.previousClose}}</strong></td>
-                     </tr>
-                     <tr class="table-primary">
-                        <td><strong>Closing % Change From Previous Day</strong></td>
-                        <td><strong>{{stock.changePercent}}%</strong></td>
-                     </tr>
-                     <tr>
-                        <td><strong>Today's High Price</strong></td>
-                        <td><strong>${{stock.high}}</strong></td>
-                     </tr>
-                     <tr class="table-primary">
-                        <td><strong>Today's High Time</strong></td>
-                        <td><strong>{{stock.highTime}}</strong></td>
-                     </tr>
-                     <tr>
-                        <td><strong>Today's Low Price</strong></td>
-                        <td><strong>${{stock.low}}</strong></td>
-                     </tr>
-                     <tr>
-                     <tr class="table-primary">
-                        <td><strong>Today's Low Time</strong></td>
-                        <td><strong>{{stock.lowTime}}</strong></td>
-                     </tr>
-                     <tr>
-                        <td><strong>Last Trade Time</strong></td>
-                        <td><strong>{{stock.lastTradeTime}}</strong></td>
-                     </tr>
-                     <tr class="table-primary">
-                        <td><strong>52-wk high</strong></td>
-                        <td><strong>${{stock.week52High}}</strong></td>
-                     </tr>
-                     <tr>
-                        <td><strong>52-wk low</strong></td>
-                        <td><strong>${{stock.week52Low}}</strong></td>
-                     </tr>
-                     <tr class="table-primary">
-                        <td><strong>P/E ratio</strong></td>
-                        <td><strong>{{stock.peRatio}}</strong></td>
-                     </tr>
-                     <tr>
-                        <td><strong>YTD Change</strong></td>
-                        <td><strong>{{stock.ytdChange}}%</strong></td>
-                     </tr>
-                  </tbody>
-               </table></div>
+                  <div class="col-sm-6">
+                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#thisDayStockVisual" onclick="drawLineChartForToday()" style="float: left;">
+                     Visualize for {{stock.latestTime}}
+                     </button>
+                  </div>
+               </div>
+               <br>
+               <div class="row">
+                  <table class="table table-hover">
+                     <caption>Disclaimer: The above data has been provided by a third party API. Hence, We do not guarantee the correcteness of these data.</caption>
+                     <tbody>
+                        <tr class="table-primary">
+                           <td><strong>Primary Exchange</strong></td>
+                           <td><strong>{{stock.primaryExchange}}</strong></td>
+                        </tr>
+                        <tr>
+                           <td><strong>Last Updated (ET)</strong></td>
+                           <td><strong>{{stock.latestTime}}</strong></td>
+                        </tr>
+                        <tr class="table-primary">
+                           <td><strong>Latest Price</strong></td>
+                           <td><strong>${{stock.latestPrice}}</strong></td>
+                        </tr>
+                        <tr>
+                           <td><strong>Open Price</strong></td>
+                           <td><strong>${{stock.open}}</strong></td>
+                        </tr>
+                        <tr class="table-primary">
+                           <td><strong>Opening Time</strong></td>
+                           <td><strong>{{stock.openTime}}</strong></td>
+                        </tr>
+                        <tr>
+                           <td><strong>Closing Price</strong></td>
+                           <td><strong>${{stock.close}}</strong></td>
+                        </tr>
+                        <tr class="table-primary">
+                           <td><strong>Closing Time</strong></td>
+                           <td><strong>{{stock.closeTime}}</strong></td>
+                        </tr>
+                        <tr>
+                           <td><strong>Previous Close Price</strong></td>
+                           <td><strong>${{stock.previousClose}}</strong></td>
+                        </tr>
+                        <tr class="table-primary">
+                           <td><strong>Closing % Change From Previous Day</strong></td>
+                           <td><strong>{{stock.changePercent}}%</strong></td>
+                        </tr>
+                        <tr>
+                           <td><strong>Today's High Price</strong></td>
+                           <td><strong>${{stock.high}}</strong></td>
+                        </tr>
+                        <tr class="table-primary">
+                           <td><strong>Today's High Time</strong></td>
+                           <td><strong>{{stock.highTime}}</strong></td>
+                        </tr>
+                        <tr>
+                           <td><strong>Today's Low Price</strong></td>
+                           <td><strong>${{stock.low}}</strong></td>
+                        </tr>
+                        <tr>
+                        <tr class="table-primary">
+                           <td><strong>Today's Low Time</strong></td>
+                           <td><strong>{{stock.lowTime}}</strong></td>
+                        </tr>
+                        <tr>
+                           <td><strong>Last Trade Time</strong></td>
+                           <td><strong>{{stock.lastTradeTime}}</strong></td>
+                        </tr>
+                        <tr class="table-primary">
+                           <td><strong>52-wk high</strong></td>
+                           <td><strong>${{stock.week52High}}</strong></td>
+                        </tr>
+                        <tr>
+                           <td><strong>52-wk low</strong></td>
+                           <td><strong>${{stock.week52Low}}</strong></td>
+                        </tr>
+                        <tr class="table-primary">
+                           <td><strong>P/E ratio</strong></td>
+                           <td><strong>{{stock.peRatio}}</strong></td>
+                        </tr>
+                        <tr>
+                           <td><strong>YTD Change</strong></td>
+                           <td><strong>{{stock.ytdChange}}%</strong></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
             </div>
          </div>
          <h1> </h1>
@@ -168,54 +171,69 @@
    </div>
 </div>
 {{!-- company description modal ends here --}}
-
-
-{{!-- Highcharts feature begins here  --}}
-
-
-
-
-
-
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="container1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Stock Trends Visualizer for {{stock.companyName}} ({{stock.symbol}})</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+{{!-- Visualizer feature begins here  --}}
+<!-- This Month Stock Visualizer Modal -->
+<div class="modal fade" id="thisMonthStockVisual" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">This Month's Stock Trends Visualizer for {{stock.companyName}} ({{stock.symbol}})</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div id = "thisMonthContainer" class="row"></div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+         </div>
       </div>
-      <div class="modal-body">
-         <div id = "container" class="row"></div>
-      </div>
-      <div class="modal-footer">
-      
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
+   </div>
 </div>
-
-
-
+<!-- This Day Stock Visualizer Modal -->
+<div class="modal fade" id="thisDayStockVisual" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Today's Stock Trends Visualizer for {{stock.companyName}} ({{stock.symbol}})</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div id = "thisDayContainer" class="row"></div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
 <script>
-        
-         function drawLineChart() {
-            var highchartsJSON = document.getElementById("chartInfo").innerHTML;
-            Highcharts.setOptions({
-        lang: {
+   // javascript function to draw line chart for this month's stock trends
+    function drawLineChart() {
+       var highchartsJSON = document.getElementById("chartInfo").innerHTML;
+       Highcharts.setOptions({
+         lang: {
             thousandsSep: ','
-        }
-    });
-            $('#container').highcharts(JSON.parse(highchartsJSON));
          }
-            
-        
-      </script>
-
-{{!-- Highcharts feature ends here --}}
+      });
+       $('#thisMonthContainer').highcharts(JSON.parse(highchartsJSON));
+    }
+   
+    // javascript function to draw line chart for today's stock trends
+    function drawLineChartForToday(){
+       var highchartsJSON = document.getElementById("chartInfoForToday").innerHTML;
+       Highcharts.setOptions({
+         lang: {
+            thousandsSep: ','
+         }
+      });
+       $('#thisDayContainer').highcharts(JSON.parse(highchartsJSON));
+       
+    }
+       
+   
+</script>
+{{!-- Visualizer feature ends here --}}
