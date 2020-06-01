@@ -420,7 +420,7 @@ app.post('/', (req, res) => {
 }); // end of POST '/'
 
 
-app.get('/about.html', function (req, res) {
+app.get('/about', function (req, res) {
 	res.render('about');
 });
 
