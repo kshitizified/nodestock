@@ -271,18 +271,22 @@ app.post('/', (req, res) => {
 		};
 
 		var series = [{
+				connectNulls: true,
 				name: 'Open',
 				data: []
 			},
-			{
+			{	
+				connectNulls: true,
 				name: 'Close',
 				data: []
 			},
-			{
+			{	
+				connectNulls: true,
 				name: 'High',
 				data: []
 			},
-			{
+			{	
+				connectNulls: true,
 				name: 'Low',
 				data: []
 			}
