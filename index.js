@@ -421,6 +421,7 @@ app.post('/', (req, res) => {
 
 
 app.get('/about', function (req, res) {
+	console.log(" /about called, rendering about.handlebars")
 	res.render('about');
 });
 
