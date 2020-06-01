@@ -15,7 +15,7 @@
                <br>
                <div class="row">
                   <div class="col-sm-12">
-                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#companyDescription">About {{stock.companyName}}</button>
+                     <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#companyDescription">About {{stock.companyName}}</button>
                   </div>
                </div>
                <br>
@@ -45,12 +45,12 @@
             <div class="card-body text-info">
                <div class="row">
                   <div class="col-sm-6">
-                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#thisMonthStockVisual" onclick="drawLineChart()" style="float: right;">
+                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#thisMonthStockVisual" onclick="drawLineChart()" style="float: right;">
                      Visualize for this month
                      </button>
                   </div>
                   <div class="col-sm-6">
-                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#thisDayStockVisual" onclick="drawLineChartForToday()" style="float: left;">
+                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#thisDayStockVisual" onclick="drawLineChartForToday()" style="float: left;">
                      Visualize for {{stock.latestTime}}
                      </button>
                   </div>
