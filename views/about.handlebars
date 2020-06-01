@@ -1,2 +1,71 @@
 </br>
-<h1> Welcome to the about page of Handlebar </h1>
+<div class="row">
+   {{!-- About Me --}}
+   <div class="col-sm-4">
+      <div class="card">
+         <h5 class="card-header">
+            <center>About the Developer</center>
+         </h5>
+         <div class="card-body">
+            <h5 class="card-title">
+               <center>Hi there! My name is </center>
+            </h5>
+            <h4 class="card-title">
+               <center>Kshitiz Kumar</center>
+            </h4>
+            <br>
+            <a class="noUnderLine" href="https://github.com/kshitizified" target="_blank">
+            <button type="button" class="btn btn-outline-dark btn-lg btn-block">My Github Profile  <i class="fa fa-github fa-lg"  aria-hidden="true" ></i></button>
+            </a>
+            <br>
+            <a class="noUnderLine" href="https://www.linkedin.com/in/kshitiz-kumar/" target="_blank">
+            <button type="button" class="btn btn-outline-primary btn-lg btn-block">My LinkedIn Profile  <i class="fa fa-linkedin-square fa-lg" aria-hidden="true"></i></button>
+            </a><br>
+            <a class="noUnderLine" href="https://theheapspace.blogspot.com/" target="_blank">
+            <button type="button" class="btn btn-outline-success btn-lg btn-block"> My DSA Blog   <i class="fa fa-code fa-lg" aria-hidden="true"></i></i></button>
+            </a>
+            <br>
+            <button type="" class="btn btn-outline-danger btn-lg btn-block"> <i class="fa fa-envelope fa-lg" aria-hidden="true"></i> kshitizkumar1995@gmail.com   </button>
+         </div>
+      </div>
+   </div>
+   <div class="col-sm-8">
+      <div class="card">
+         <h5 class="card-header">
+            <center>About NodeStock</center>
+         </h5>
+         <div class="card-body">
+            <h5 class="card-title">NodeStock is a web app that can help us to know about the Market Stocks of a Company and also helps us Visualize those data.</h5>
+            <p class="card-text">You just need to enter the exchange symbol of a company in the search bar in the Menu above and rest we will do it for you.</p>
+            <p class="card-text">We will present you with data like latest price, open price, close price, high price, low price, previous close price and many more!</p>
+            <p class="card-text">All those lage quantity of data making you dizzy? Oh well, we have one more solution for you.</p>
+            <p class="card-text">We will help you Visualize those data with the help of beautiful line charts.</p>
+            <p class="card-text">We will draw two line charts for you. One showing Stock Trends of the Company for the current month and well, other will help you visualize Stock trends for today (or last updated date.)</p>
+            <p class="card-text">And yes, it's completely free for you! No ads. Nothing else. Just the data which you searched for.</p>
+            <p class="card-text">So, what are you waiting for? Go and give NodeStock a try :) </p>
+         </div>
+      </div>
+   </div>
+</div>
+{{!-- row --}}
+<br>
+<div class="row">
+   <div class="col-sm-12">
+      <div class="card">
+         <h5 class="card-header">
+            <center>How NodeStock Works (Technical)</center>
+         </h5>
+         <div class="card-body">
+            <h5 class="card-title">NodeStock fetches all its data from a third party API.</h5>
+            <p class="card-text">For doing that, NodeStock makes an Asnyc call to API endpoints. It then aggregates the data received in response, does some data-marshalling for displaying them and also does some data-processing for drawing beautiful Visualizer graphs.</p>
+            <h5 class="card-title">Technologies Used:</h5>
+            <p class="card-text">NodeStock is a <strong>nodejs</strong> app. For handling the routes, it uses <strong>expressjs</strong> framework. For displaying the data and rendering of views (HTML Pages) it uses <strong>express-handlebars</strong>. It uses <strong>HighCharts</strong> for drawing beautiful line charts for Stock Trend Visualizer. All frontend components are <strong>Bootstrap</strong> Components. NodeStock also uses <strong>some custom CSS</strong>, font library of <strong>font-awesome 4</strong> and some <strong>client side Javascript</strong> too.</p>
+            <p class="card-text">Even though I have used Bootstrap in NodeStock, I feel NodeStock can further be improved for responsiveness devices with small screens. So, for now, I request to use NodeStock on PCs.</p>
+            <h5 class="card-title">Want to Contribute to NodeStock? Check out the Repository below and create a Pull Request. I would love to see NodeStock improve.</h5>
+            <a href="https://github.com/kshitizified/nodestock" class="noUnderLine" target="_blank"><button type="button" class="btn btn-outline-danger">
+            NodeStock Repository on Github <i class="fa fa-github fa-lg"  aria-hidden="true" ></i>
+            </button></a>
+         </div>
+      </div>
+   </div>
+</div>
