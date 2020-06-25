@@ -1,4 +1,4 @@
-// Stock Market Portfolio App by Kshitiz Kumar
+// Stock Market Portfolio App by Kshitiz Kumar.
 
 const express = require('express');
 const path = require('path');
